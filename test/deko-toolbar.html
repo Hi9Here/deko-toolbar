@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <title>deko-toolbar</title>
+    <script src="../../webcomponentsjs/webcomponents.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../test-fixture/test-fixture-mocha.js"></script>
+    <script src="../../iron-test-helpers/mock-interactions.js"></script>
+    <link rel="import" href="../../polymer/polymer.html">
+    <link rel="import" href="../../test-fixture/test-fixture.html">
+    <link rel="import" href="../deko-toolbar.html">
+  </head>
+  <body>
+    <test-fixture id="dekoToolbar">
+      <template>
+        <deko-toolbar></deko-toolbar> //TODO add attributes
+      </template>
+    </test-fixture>
+    <script>
+      suite('<deko-toolbar>', function () {
+        var dekoToolbar;
+        setup(function () {
+          dekoToolbar = fixture('dekoToolbar');
+        });
+        teardown(function () {
+          //...
+        });
+        suite("This test is just to show that tests are running", function () {
+          test("test is running", function(done) {
+            done()
+          })
+        })
+        suite('These test allow you to interact with the element', function () {
+          test('can be triggered with space', function(done) {
+            dekoToolbar.addEventListener('keydown', function() {
+              done()
+            })
+            MockInteractions.pressSpace(dekoToolbar)
+          })
+          test('can be clicked', function(done) {
+            dekoToolbar.addEventListener('click', function() {
+              done()
+            })
+            MockInteractions.tap(dekoToolbar)
+          })
+        })
+      })
+    </script>
+  </body>
+</html>
