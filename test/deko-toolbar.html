@@ -13,37 +13,41 @@
   <body>
     <test-fixture id="dekoToolbar">
       <template>
-        <deko-toolbar></deko-toolbar> //TODO add attributes
+        <deko-toolbar></deko-toolbar>
       </template>
     </test-fixture>
     <script>
       suite('<deko-toolbar>', function () {
-        var dekoToolbar;
+        var deko;
         setup(function () {
-          dekoToolbar = fixture('dekoToolbar');
+          deko = fixture('dekoToolbar');
         });
-        teardown(function () {
-          //...
+
+// These tests assert whether the attributes are working
+        suite('deko-app tests', function() {
+
+          test('instantiating the element works', function() {
+            assert.equal(deko.is, 'deko-toolbar');
+          });
+
+          test('app-toolbar has icon of more-vert in the menu', function() {
+            var papermenu = Polymer.dom(deko.root).querySelector('paper-menu-button paper-icon-button');
+            assert.equal(papermenu.icon, "more-vert");
+          });
+
+          test('app-toolbar image of deko logo', function() {
+            var logoimage = Polymer.dom(deko.root).querySelector('iron-image');
+            assert.equal(logoimage.src, "http://localhost:2000/components/deko-toolbar/deko-logo-150.png");
+          });
+
+          // TODO
+          // test('color of toolbar is #80c342', function() {
+          //   var toolbr = Polymer.dom(deko.root).querySelector('app-toolbar');
+          //   assert.equal(toolbr.style.backgroundColor, "#80c342");
+          // });
+
         });
-        suite("This test is just to show that tests are running", function () {
-          test("test is running", function(done) {
-            done()
-          })
-        })
-        suite('These test allow you to interact with the element', function () {
-          test('can be triggered with space', function(done) {
-            dekoToolbar.addEventListener('keydown', function() {
-              done()
-            })
-            MockInteractions.pressSpace(dekoToolbar)
-          })
-          test('can be clicked', function(done) {
-            dekoToolbar.addEventListener('click', function() {
-              done()
-            })
-            MockInteractions.tap(dekoToolbar)
-          })
-        })
+
       })
     </script>
   </body>

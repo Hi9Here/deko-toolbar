@@ -15,10 +15,16 @@
     "paper-item": "polymerelements/paper-item#ad314fa38f",
     "paper-menu": "*",
     "paper-menu-button": "*",
-    "app-layout": "PolymerLabs/app-layout#~0.10.7"
+    "app-layout": "PolymerLabs/app-layout#~0.10.7",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.2.5",
+    "iron-component-page": "PolymerElements/iron-component-page#^1.1.8"
   },
   "devDependencies": {
     "iron-test-helpers": "*",
     "web-component-tester": "^5.0.0"
+  },
+  "resolutions": {
+    "polymer": "^1.6.0",
+    "paper-icon-button": "^1.0.0"
   }
 }
