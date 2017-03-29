@@ -22,8 +22,8 @@
         --paper-menu-color: #fff;
       }
       app-toolbar {
-        background: #80c342;
-        color: #fff;
+        background: var(--deko-toolbar-background-color, #80c342);
+        color: var(--deko-toolbar-text-color, #fff);
       }
       img {
         height: 50px;
@@ -35,6 +35,7 @@
 
     <app-toolbar>
       <img src="logos/deko-logo.svg">
+      <div main-title></div>
       <content></content>
       <paper-menu-button>
         <paper-icon-button icon="more-vert" class="dropdown-trigger"></paper-icon-button>
