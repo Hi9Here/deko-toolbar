@@ -10,7 +10,6 @@
   "dependencies": {
     "polymer": "polymer/polymer#~1.7.1",
     "iron-image": "PolymerElements/iron-image#~1.2.5",
-    "inbox-search": "marcus7777/inbox-search#5d7d242d63",
     "paper-icon-button": "polymerelements/paper-icon-button#c5e1da4fb7",
     "paper-item": "polymerelements/paper-item#ad314fa38f",
     "paper-menu": "*",
