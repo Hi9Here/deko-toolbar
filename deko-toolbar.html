@@ -1,10 +1,8 @@
-<link rel="import" href="../paper-menu-button/paper-menu-button.html">
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../paper-dialog/paper-dialog.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../app-layout/app-toolbar/app-toolbar.html">
-<link rel="import" href="../iron-media-query/iron-media-query.html">
-<link rel="import" href="../iron-image/iron-image.html">
-<link rel="import" href="../paper-menu/paper-menu.html">
-<link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="../polymer/polymer.html">
 <!--
   `deko-toolbar`
@@ -18,44 +16,67 @@
     <style>
       :host {
         display: block;
-        --paper-menu-background-color: #fc0505;
-        --paper-menu-color: #fff;
+        --paper-icon-button: {
+          padding: 0;
+          height: 50px;
+          width: 50px;
+        }
       }
       app-toolbar {
-        background: var(--deko-toolbar-background-color, #80c342);
-        color: var(--deko-toolbar-text-color, #fff);
+        background: none;
+        color: var(--deko-toolbar-text-color, #333);
       }
-      paper-icon-button {
-        color: var(--deko-toolbar-icon-color, #fff);
+      paper-dialog {
+        height: 90%;
+        width: 90%;
       }
-      paper-item {
-        font-family: var(--deko-toolbar-menu-font, Roboto, Arial, Helvetica, sans-serif);
+      #container {
+        height: 90%;
+        @apply(--layout-horizontal);
+        @apply(--layout-center);
+        @apply(--layout-center-justified);
       }
-      img {
-        height: 50px;
+      paper-button#logoutbutton {
+        background: #ff5722;
+        color: #fff;
+        font-size: 40px;
+        display: inline-block;
       }
-      paper-item:hover {
-        cursor: pointer;
+      #buttons {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+      }
+      #buttons {
+        font-size: 20px;
       }
     </style>
 
     <app-toolbar>
-      <img src="logos/deko-logo.svg">
+
+      <paper-icon-button src="logos/deko-logo.svg" on-tap="open"></paper-icon-button>
+      
+      <paper-dialog id="dialog" modal>
+        <div id="container">
+          <template is="dom-if" if="[[user]]">
+              <template is="dom-if" if="[[!user.isAnonymous]]">
+                <paper-button id="logoutbutton" raised on-tap="logout" dialog-dismiss>Logout</paper-button>
+              </template>
+              <template is="dom-if" if="[[user.isAnonymous]]">
+                <paper-button raised on-tap="login">Login</paper-button>
+              </template>
+          </template>
+        </div>
+        <div id="buttons">
+          <paper-button dialog-dismiss>Cancel</paper-button>
+        </div>
+      </paper-dialog>
+      
       <div main-title></div>
       <content></content>
-      <paper-menu-button>
+      <!--<paper-menu-button>
         <paper-icon-button icon="more-vert" class="dropdown-trigger"></paper-icon-button>
-        <template is="dom-if" if="[[user]]">
-          <paper-menu class="dropdown-content">
-            <template is="dom-if" if="[[!user.isAnonymous]]">
-              <paper-item on-tap="logout">Logout</paper-item>
-            </template>
-            <template is="dom-if" if="[[user.isAnonymous]]">
-              <paper-item on-tap="login">Login</paper-item>
-            </template>
-          </paper-menu>
-        </template>
-      </paper-menu-button>
+      </paper-menu-button>-->
     </app-toolbar>
   </template>
 </dom-module>
@@ -71,5 +92,8 @@
     logout: function() {
       this.fire("logout")
     },
+    open: function(){
+      this.$.dialog.open()
+    }
   })
 </script>
