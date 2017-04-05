@@ -1,6 +1,7 @@
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../paper-dialog/paper-dialog.html">
 <link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../iron-media-query/iron-media-query.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="../polymer/polymer.html">
@@ -50,12 +51,38 @@
       #buttons {
         font-size: 20px;
       }
+      h4 {
+        font-family: Raleway, Arial, Helvetica, sans-serif;
+        font-size: 40px;
+        font-weight: 300;
+      }
+      #titletext {
+        font-family: Raleway, Arial, Helvetica, sans-serif;
+        font-size: 30px;
+        font-weight: 300;
+        margin-left: 15px;
+        margin: 8px 0px 0px 15px;
+      }
     </style>
 
-    <app-toolbar>
+    <iron-media-query query="(min-width: 700px)" query-matches="{{wide}}"></iron-media-query>
+
+
+    <app-toolbar> 
+      <h4>DEKO</h4>
+      <template is="dom-if" if="{{wide}}">
+      <div id="titletext" main-title>Web Made Simple</div>
+      </template>
+
+      <template is="dom-if" if="{{!wide}}">
+      <div id="titletext" main-title></div>
+      </template>
+      <content></content>
 
       <paper-icon-button src="logos/deko-logo.svg" on-tap="open"></paper-icon-button>
-      
+
+    </app-toolbar>
+
       <paper-dialog id="dialog" modal>
         <div id="container">
           <template is="dom-if" if="[[user]]">
@@ -71,13 +98,7 @@
           <paper-button dialog-dismiss>Cancel</paper-button>
         </div>
       </paper-dialog>
-      
-      <div main-title></div>
-      <content></content>
-      <!--<paper-menu-button>
-        <paper-icon-button icon="more-vert" class="dropdown-trigger"></paper-icon-button>
-      </paper-menu-button>-->
-    </app-toolbar>
+
   </template>
 </dom-module>
 <script>
