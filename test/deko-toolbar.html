@@ -30,13 +30,8 @@
             assert.equal(deko.is, 'deko-toolbar');
           });
 
-          test('app-toolbar has icon of more-vert in the menu', function() {
-            var papermenu = Polymer.dom(deko.root).querySelector('paper-menu-button paper-icon-button');
-            assert.equal(papermenu.icon, "more-vert");
-          });
-
           test('app-toolbar image of deko logo', function() {
-            var logoimage = Polymer.dom(deko.root).querySelector('img');
+            var logoimage = Polymer.dom(deko.root).querySelector('paper-icon-button');
             assert.equal(logoimage.src, "http://localhost:2000/components/deko-toolbar/logos/deko-logo.svg");
           });
 
