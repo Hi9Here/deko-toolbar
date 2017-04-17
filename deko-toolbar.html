@@ -56,7 +56,7 @@
         font-size: 40px;
         font-weight: 300;
       }
-      #titletext {
+      .titletext {
         font-family: Raleway, Arial, Helvetica, sans-serif;
         font-size: 30px;
         font-weight: 300;
@@ -71,11 +71,11 @@
     <app-toolbar> 
       <h4>DEKO</h4>
       <template is="dom-if" if="{{wide}}">
-      <div id="titletext" main-title>Web Made Simple</div>
+      <div class="titletext" main-title>Web Made Simple</div>
       </template>
 
       <template is="dom-if" if="{{!wide}}">
-      <div id="titletext" main-title></div>
+      <div class="titletext" main-title></div>
       </template>
       <content></content>
 
