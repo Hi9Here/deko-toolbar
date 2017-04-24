@@ -47,8 +47,6 @@
         position: absolute;
         bottom: 20px;
         right: 20px;
-      }
-      #buttons {
         font-size: 20px;
       }
       h4 {
@@ -66,7 +64,6 @@
     </style>
 
     <iron-media-query query="(min-width: 700px)" query-matches="{{wide}}"></iron-media-query>
-
 
     <app-toolbar> 
       <h4>DEKO</h4>
@@ -98,7 +95,6 @@
           <paper-button dialog-dismiss>Cancel</paper-button>
         </div>
       </paper-dialog>
-
   </template>
 </dom-module>
 <script>
@@ -114,6 +110,7 @@
       this.fire("logout")
     },
     login: function() {
+      this.$.dialog.close()
       this.fire("login")
     },
     open: function(){
