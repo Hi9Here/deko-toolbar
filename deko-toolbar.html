@@ -1,9 +1,9 @@
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../iron-media-query/iron-media-query.html">
 <link rel="import" href="../paper-dialog/paper-dialog.html">
 <link rel="import" href="../paper-button/paper-button.html">
-<link rel="import" href="../iron-media-query/iron-media-query.html">
-<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
-<link rel="import" href="../app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="../polymer/polymer.html">
 <!--
   `deko-toolbar`
@@ -112,6 +112,9 @@
     },
     logout: function() {
       this.fire("logout")
+    },
+    logoin: function() {
+      this.fire("login")
     },
     open: function(){
       this.$.dialog.open()
